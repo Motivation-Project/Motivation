@@ -1,8 +1,199 @@
 <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <title>Motivation Extension</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Motivation</title>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <!-- Bootstrap CSS (Replit Dark Theme) -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-    <h1>Welcome to the Motivation Extension</h1>
+    <!-- Navigation Bar 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-search-plus me-2"></i>
+               
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+-->
+    <!-- Hero Section with Search -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 mb-4">Motivation | Great Way To Motivate Your Day</h1>
+                    <p class="lead mb-5">Use Our Search Engine By Bevel To Surf The Web With Built In Motivations</p>
+                    
+                    <!-- Custom Search Form -->
+                    <div class="search-container">
+                        <form id="search-form" class="mb-4" action="https://duckduckgo.com/html/?q=" method="get" target="_blank">
+                            <div class="input-group search-input-group">
+                                <input type="text" id="search-input" name="q" class="form-control" placeholder="What are you looking for?" aria-label="Search">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fas fa-search"></i> Search
+                                </button>
+                            
+                            </div> 
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="text-center py-4" style="display: none;">
+        <div class="spinner-border text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+    <!-- Search Results Section -->
+    <section id="search-results-section" class="py-5" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 id="results-title">Search Results</h2>
+                        <button id="clear-search" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-times"></i> Clear Results
+                        </button>
+                    </div>
+                    
+                                    <!-- This section is no longer needed as results open in a new page -->
+                    <div id="search-results">
+                        <!-- Results will open in a new tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+                <section id="Motivation" style="text-align:center; margin-top: 2em; padding: 1em; border: 2px solid #ccc; border-radius: 8px;">
+                <h2>Motivation</h2>
+                <div id="motivation-display">
+                    <p>Loading Motivation of the day...</p>
+                </div>
+                 <script>
+        // Array of sensory Motivations with details
+        // Put ALL Motivations in the listing here
+        const motivations = [
+            {
+                name: "However difficult life may seem, there is always something you can do and succeed at.",
+                creator: "Creator: Stephen Hawking"
+            },
+                        {
+                name: "However difficult life may seem, there is always something you can do and succeed at.",
+                creator: "Creator: Stephen Hawking"
+            },
+            
+        ];
+
+// set this to null when not being tested
+const currentmotivationIndexOverride = null;
+
+
+        // Function to get the Motivations of the day based on current date in GMT or override
+        function getmotivationOfTheDay() {
+            if (currentmotivationIndexOverride !== null && currentmotivationIndexOverride >= 0 && currentmotivationIndexOverride < motivations.length) {
+                return motivations[currentmotivationIndexOverride];
+            }
+            const now = new Date();
+            console.log("date for Motivations of the day:", now);
+            // Get current date in GMT (year, month, day)
+            const gmtYear = now.getUTCFullYear();
+            console.log(gmtYear)
+            const gmtMonth = now.getUTCMonth();
+            console.log(gmtMonth)
+            const gmtDate = now.getUTCDate();
+            console.log(gmtDate)
+            // Create a date object for midnight GMT today
+            const gmtMidnight = new Date(Date.UTC(gmtYear, gmtMonth, gmtDate));
+            // Calculate the number of days since epoch (Jan 1, 1970)
+            const daysSinceEpoch = Math.floor(gmtMidnight.getTime() / (1000 * 60 * 60 * 24));
+            console.log("epoch since Jan 1, 1970:", daysSinceEpoch);
+            // Use modulo to cycle through the toys array
+            const motivationIndex = daysSinceEpoch % motivations.length;
+            return motivations[motivationIndex];
+            console.log("getToyOfTheDay function completed!")
+        }
+
+        function displaymotivationOfTheDay() {
+            const motivation = getmotivationOfTheDay();
+            const motivationDisplay = document.getElementById('motivation-display');
+            motivationDisplay.innerHTML = `
+                <h3>${motivation.name}</h3>
+                <p>${motivation.creator}</p>
+            `;
+        }
+
+        // Run the display function on page load
+        window.onload = displaymotivationOfTheDay;
+    </script>
+            </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-search-plus me-2"></i> Bevel </h5>
+                    <p>Your gateway to discovering the web. Fast, reliable, and secure search results.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-decoration-none">Help</a></li>
+                        <li><a href="privacy-policy.html" class="text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Connect</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://discord.gg/V8EHewRu9a" class="text-decoration-none"><i class="fab fa-discord me-2"></i>Discord</a></li>
+                        <li><a href="https://bsky.app/profile/meowcat767.bsky.social" class="text-decoration-none"><i class="fab fa-bluesky me-2"></i>Bluesky</a></li>
+                        <li><a href="https://github.com/Alto-Inc" class="text-decoration-none"><i class="fab fa-github me-2"></i>GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0">&copy; 2025 Bevel by Alto Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
