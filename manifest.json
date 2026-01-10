@@ -1,16 +1,16 @@
-{
-  "manifest_version": 3,
-  "name": "Motivation Extension",
-  "version": "1.0",
-  "description": "Gives motivational quotes, everytime you open a new tab.",
+  {
+    "manifest_version": 3,
+    "name": "Motivation Extension",
+    "version": "1.0",
+    "description": "Gives motivational quotes, everytime you open a new tab.",
 
-  "action": {
-    "default_popup": "hello.html",
-    "default_icon": "image/motivation.png"
-  },
+    "action": {
+      "default_popup": "hello.html",
+      "default_icon": "image/motivation.png"
+    },
 
 
-  "chrome_url_overrides": {
-    "newtab": "index.html"
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    }
   }
-}
