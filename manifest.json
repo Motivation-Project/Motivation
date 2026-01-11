@@ -1,16 +1,27 @@
-  {
-    "manifest_version": 3,
-    "name": "Motivation Extension",
-    "version": "1.0",
-    "description": "Gives motivational quotes, everytime you open a new tab.",
-
-    "action": {
-      "default_popup": "hello.html",
-      "default_icon": "image/motivation.png"
-    },
-
-
-    "chrome_url_overrides": {
-      "newtab": "index.html"
+{
+  "manifest_version": 3,
+  "name": "Motivation Extension",
+  "version": "1.0",
+  "description": "Gives motivational quotes every time you open a new tab.",
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "image/motivation.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "16": "image/motivation.png",
+    "32": "image/motivation.png",
+    "128": "image/motivation.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self';"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "image/*"],
+      "matches": ["<all_urls>"]
     }
-  }
+  ]
+}
