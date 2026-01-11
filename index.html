@@ -102,62 +102,8 @@
                 <div id="motivation-display">
                     <p>Loading Motivation of the day...</p>
                 </div>
-                 <script>
-        // Array of sensory Motivations with details
-        // Put ALL Motivations in the listing here
-        const motivations = [
-            {
-                name: "However difficult life may seem, there is always something you can do and succeed at.",
-                creator: "Creator: Stephen Hawking"
-            },
-                        {
-                name: "However difficult life may seem, there is always something you can do and succeed at.",
-                creator: "Creator: Stephen Hawking"
-            },
-            
-        ];
-
-// set this to null when not being tested
-const currentmotivationIndexOverride = null;
-
-
-        // Function to get the Motivations of the day based on current date in GMT or override
-        function getmotivationOfTheDay() {
-            if (currentmotivationIndexOverride !== null && currentmotivationIndexOverride >= 0 && currentmotivationIndexOverride < motivations.length) {
-                return motivations[currentmotivationIndexOverride];
-            }
-            const now = new Date();
-            console.log("date for Motivations of the day:", now);
-            // Get current date in GMT (year, month, day)
-            const gmtYear = now.getUTCFullYear();
-            console.log(gmtYear)
-            const gmtMonth = now.getUTCMonth();
-            console.log(gmtMonth)
-            const gmtDate = now.getUTCDate();
-            console.log(gmtDate)
-            // Create a date object for midnight GMT today
-            const gmtMidnight = new Date(Date.UTC(gmtYear, gmtMonth, gmtDate));
-            // Calculate the number of days since epoch (Jan 1, 1970)
-            const daysSinceEpoch = Math.floor(gmtMidnight.getTime() / (1000 * 60 * 60 * 24));
-            console.log("epoch since Jan 1, 1970:", daysSinceEpoch);
-            // Use modulo to cycle through the toys array
-            const motivationIndex = daysSinceEpoch % motivations.length;
-            return motivations[motivationIndex];
-            console.log("getToyOfTheDay function completed!")
-        }
-
-        function displaymotivationOfTheDay() {
-            const motivation = getmotivationOfTheDay();
-            const motivationDisplay = document.getElementById('motivation-display');
-            motivationDisplay.innerHTML = `
-                <h3>${motivation.name}</h3>
-                <p>${motivation.creator}</p>
-            `;
-        }
-
-        // Run the display function on page load
-        window.onload = displaymotivationOfTheDay;
-    </script>
+                    <!-- If your looking to edit the motivations, Go to https://github.com/AnirudhKarthikofficial/Motivation-API  -->
+                <script src="https://cdn.jsdelivr.net/gh/AnirudhKarthikofficial/Motivation-API@main/script.js"></script>
             </section>
 
 
@@ -167,8 +113,8 @@ const currentmotivationIndexOverride = null;
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5><i class="fas fa-search-plus me-2"></i> Bevel </h5>
-                    <p>Your gateway to discovering the web. Fast, reliable, and secure search results.</p>
+                    <h5><i class="fas fa-search-plus me-2"></i> Motivation </h5>
+                    <p>Use Our Search Engine By Bevel To Surf The Web With Built In Motivations.</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Links</h5>
@@ -189,7 +135,7 @@ const currentmotivationIndexOverride = null;
                 </div>
             </div>
             <hr>
-            <p class="text-center mb-0">&copy; 2025 Bevel by Alto Inc. All rights reserved.</p>
+            <p class="text-center mb-0">&copy; 2026 Motivation. All rights reserved.</p>
         </div>
     </footer>
 
