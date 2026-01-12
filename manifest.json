@@ -1,24 +1,23 @@
 {
   "manifest_version": 3,
   "name": "Motivation Extension",
-  "version": "1.1",
+  "version": "1.0",
   "description": "Gives motivational quotes every time you open a new tab.",
-  "action": {
-    "default_popup": "hello.html",
-    "default_icon": "image/motivation.png"
+
+  "host_permissions": [
+    "https://duckduckgo.com/*"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.replit.com 'unsafe-inline'; style-src-elem 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.replit.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; form-action https://duckduckgo.com"
   },
+
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "icons": {
-    "16": "image/motivation.png",
-    "32": "image/motivation.png",
-    "128": "image/motivation.png"
-  },
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://cdn.jsdelivr.net;"
-  },
-  "host_permissions": [
-    "https://cdn.jsdelivr.net/*"
-  ]
+
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "image/motivation.png"
+  }
 }

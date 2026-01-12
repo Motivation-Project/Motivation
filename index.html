@@ -3,72 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motivation</title>
+    <title> Motivation</title>
 
-    <!-- ✅ FIX: Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        style-src 'self' 'unsafe-inline' https://cdn.replit.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
-        script-src 'self' https://cdn.jsdelivr.net https://jsdelivr.net https://cdn.jsdelivr.net/npm;
-        font-src 'self' https://cdnjs.cloudflare.com;
-        img-src 'self' data:;
-        connect-src 'self';
-    ">
+
+<script src="hcaptcha.js" async defer></script>
+
 
     <!-- Bootstrap CSS (Replit Dark Theme) -->
-    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="Bootstrap.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="font-awesome.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+
 </head>
-
 <body>
-
-    <!-- Hero Section -->
+    <!-- Navigation Bar 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-search-plus me-2"></i>
+               
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+-->
+    <!-- Hero Section with Search -->
     <section class="hero-section">
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h1 class="display-4 mb-4">Motivation | Great Way To Motivate Your Day</h1>
-                    <p class="lead mb-5">Use Our Search Engine By Bevel To Surf The Web With Built In Motivations</p>
-
+                    <p class="lead mb-5">Use Our Search Engine By Motivation To Surf The Web With Built In Motivations</p>
+                    
+                    <!-- Custom Search Form -->
                     <div class="search-container">
-                        <form id="search-form" class="mb-4" action="https://duckduckgo.com/html/" method="get" target="_blank">
+                        <form id="search-form" class="mb-4" action="https://boopup.dev/search?q=" method="get" target="_blank">
                             <div class="input-group search-input-group">
-                                <input type="text" id="search-input" name="q" class="form-control" placeholder="What are you looking for?">
+                                <input type="text" id="search-input" name="q" class="form-control" placeholder="What are you looking for?" aria-label="Search" required>
+                                      <div class="h-captcha" data-sitekey="7d3cad20-1a56-4794-99b6-2f026ee8d2fc"></div>
+
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fas fa-search"></i> Search
                                 </button>
-                            </div>
-                        </form>
+                            
+                            </div> 
+                        
+                        
                     </div>
-
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="text-center py-4" style="display: none;">
+        <div class="spinner-border text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+    <!-- Search Results Section -->
+    <section id="search-results-section" class="py-5" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 id="results-title">Search Results</h2>
+                        <button id="clear-search" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-times"></i> Clear Results
+                        </button>
+                    </div>
+                    
+                                    <!-- This section is no longer needed as results open in a new page -->
+                    <div id="search-results">
+                        <!-- Results will open in a new tab -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Motivation Section -->
-    <section id="Motivation" style="text-align:center; margin-top: 2em; padding: 1em; border: 2px solid #ccc; border-radius: 8px;">
-        <h2>Motivation</h2>
-        <div id="motivation-display">
-            <p>Loading Motivation of the day...</p>
-        </div>
+                <section id="Motivation" style="text-align:center; margin-top: 2em; padding: 1em; border: 2px solid #ccc; border-radius: 8px;">
+                <h2>Motivation</h2>
+                <div id="motivation-display">
+                    <p>Loading Motivation of the day...</p>
+                </div>
+    <script src="motivation-api.js"></script>
 
-        <!-- Motivation API -->
-        <script src="https://cdn.jsdelivr.net/gh/AnirudhKarthikofficial/Motivation-API@main/script.js"></script>
-    </section>
+          </section>
+
+
 
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5><i class="fas fa-search-plus me-2"></i> Motivation</h5>
-                    <p>Use Our Search Engine By Bevel To Surf The Web With Built In Motivations.</p>
+                    <h5><i class="fas fa-search-plus me-2"></i> Motivation </h5>
+                    <p>Use Our Search Engine By Motivation To Surf The Web With Built In Motivations.</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Links</h5>
@@ -93,8 +145,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
