@@ -1,4 +1,3 @@
-// Array of Motivations
 const motivations = [
   {
     name: "However difficult life may seem, there is always something you can do and succeed at.",
